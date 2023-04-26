@@ -1,0 +1,48 @@
+
+body .topbubble {
+    z-index: 1;
+    --topbubble-background: #408dbb;
+    display: grid;
+    position: fixed;
+    grid-area: topbubble;
+    height: 1rem;
+    width: 40%;
+    top: 0;
+}
+body .topbubble .bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background: var(--topbubble-background);
+    filter: url("#blob");
+}
+body .topbubble .bubbles .bubble {
+    position: absolute;  /* #absolute */
+    left: var(--position, 50%);
+    background: var(--topbubble-background);
+    border-radius: 100%;
+    animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+    transform: translate(-50%, 100%);
+}
+
+
+@keyframes bubble-size {
+    0%, 75% {
+        width: var(--size, 4rem);
+        height: var(--size, 4rem);
+   }
+    100% {
+        width: 0rem;
+        height: 0rem;
+   }
+}
+@keyframes bubble-move {
+    0% {
+        bottom: -4rem;
+   }
+    100% {
+        bottom: var(--distance, 10rem);
+   }
+}
